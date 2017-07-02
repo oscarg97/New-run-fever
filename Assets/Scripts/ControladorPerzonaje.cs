@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Esta clase progama el salto
 public class ControladorPerzonaje : MonoBehaviour {
-	public float fuerzaSalto = 100f;
+	public float fuerzaSalto = 20f;
 
 	public bool enSuelo = true;
 	public Transform comprobadorSuelo;
@@ -10,14 +11,14 @@ public class ControladorPerzonaje : MonoBehaviour {
 	public LayerMask mascaraSuelo;
 
 	private bool dobleSalto = false;
-	private Animator animator;
+	private Animator animator; //Vinculacion con la animacion
 
 	private bool corriendo = false;
-	public float velocidad = 1f;
+	public float velocidad = 5f;//Velocidad del personaje
 
 
 	void Awake(){
-		animator = GetComponent<Animator> ();
+		animator = GetComponent<Animator> (); //Vinculador con la animacion
 		}
 
 
@@ -26,13 +27,14 @@ public class ControladorPerzonaje : MonoBehaviour {
 	
 	}
 
+	//Esto nos asegura que se actualizara constantemente
 	void FixedUpdate(){
 		if (corriendo) {
 			rigidbody2D.velocity = new Vector2(velocidad, rigidbody2D.velocity.y);
 				}
-		animator.SetFloat ("VelX", rigidbody2D.velocity.x);
+		animator.SetFloat ("VelX", rigidbody2D.velocity.x); //Actualiza el personaje a correr
 		enSuelo = Physics2D.OverlapCircle (comprobadorSuelo.position, comprovadorRadio, mascaraSuelo);
-		animator.SetBool ("isGrounded", enSuelo);
+		animator.SetBool ("isGrounded", enSuelo); //Envia notificacion al animador para animacion
 		if (enSuelo) {
 			dobleSalto = false;
 				}
@@ -41,14 +43,15 @@ public class ControladorPerzonaje : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButton (0)) {
+		if (Input.GetMouseButtonDown (0)) {
 			if(corriendo){
 				//hacemos que salte si puede saltar
 				if (enSuelo || !dobleSalto) {
 					rigidbody2D.velocity= new Vector2 (rigidbody2D.velocity.x, fuerzaSalto);
 					//rigidbody2D.AddForce(new Vector2(0, fuerzaSalto));
 					if(!dobleSalto && !enSuelo){
-						dobleSalto = true;
+						dobleSalto = true; //Esto es para que cuando el personaje no este tocando el suelo
+										   //pueda saltar una vez mas
 					}
 				}
 
