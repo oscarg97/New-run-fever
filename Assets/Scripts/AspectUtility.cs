@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//Esta classe es para darle dimensiones limites segun en la pantalla que lo veamos
 public class AspectUtility : MonoBehaviour {
 	
 	public float _wantedAspectRatio = 1.3333333f;

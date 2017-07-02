@@ -55,6 +55,9 @@ public class ControladorPerzonaje : MonoBehaviour {
 
 			}else{
 				corriendo = true;
+				NotificationCenter.DefaultCenter().PostNotification(this, "PersonajeEmpiezaACorrer");
+				//Aqui hago lo mismo para saber que el mono corre y generar los bloques pero a este
+				//le puse un PostNotification y para eso ocupo un observador instanciado anteriormente
 			}
 	             
 
