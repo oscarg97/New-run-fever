@@ -4,7 +4,7 @@ using System.Collections;
 //Sushis para mas puntos
 public class Item : MonoBehaviour {
 
-	public int puntosGanados = 5;
+	public int puntosGanados = 10;
 	//public AudioClip itemSoundClip;
 	public float itemSoundVolume = 1f;
 
