@@ -14,6 +14,6 @@ public class BotonJugar : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		Application.LoadLevel ("GameScene");
+		Application.LoadLevel ("HelpScene1");
 	}
 }

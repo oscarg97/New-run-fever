@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ActivarGameOver.cs" />
+     <Compile Include="Assets\Scripts\ActualizarValoresGameOver.cs" />
      <Compile Include="Assets\Scripts\AspectUtility.cs" />
      <Compile Include="Assets\Scripts\Bloque.cs" />
      <Compile Include="Assets\Scripts\BotonCargarEscena.cs" />
@@ -54,6 +56,9 @@
      <Compile Include="Assets\Scripts\Destructor.cs" />
      <Compile Include="Assets\Scripts\EstadoJuego.cs" />
      <Compile Include="Assets\Scripts\Generador.cs" />
+     <Compile Include="Assets\Scripts\HelpScene1.cs" />
+     <Compile Include="Assets\Scripts\HelpScene2.cs" />
+     <Compile Include="Assets\Scripts\HelpScene3.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\NotificationCenter.cs" />
      <Compile Include="Assets\Scripts\Puntuacion.cs" />
