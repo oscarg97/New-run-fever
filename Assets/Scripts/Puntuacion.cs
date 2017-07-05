@@ -27,28 +27,8 @@ public class Puntuacion : MonoBehaviour {
 		if(puntuacion > EstadoJuego.estadoJuego.puntuacionMaxima){
 			EstadoJuego.estadoJuego.puntuacionMaxima = puntuacion;
 			EstadoJuego.estadoJuego.Guardar(true);
-		}
-		/* 
-		// Enviamos a Google Play Games la puntuacion obtenida
-		Social.ReportScore(puntuacion, "CgkI1-mG67sBEAIQBg", (bool success) => {});
-		
-		// Activamos las medallas correspondientes
-		if(puntuacion>=25){
-			Social.ReportProgress("CgkI1-mG67sBEAIQAQ", 100.0, (bool success) => {});
-		}
-		if(puntuacion>=50){
-			Social.ReportProgress("CgkI1-mG67sBEAIQAg", 100.0, (bool success) => {});
-		}		
-		if(puntuacion>=100){
-			Social.ReportProgress("CgkI1-mG67sBEAIQAw", 100.0, (bool success) => {});
-		}	
-		if(puntuacion>=150){
-			Social.ReportProgress("CgkI1-mG67sBEAIQBA", 100.0, (bool success) => {});
-		}	
-		if(puntuacion>=200){
-			Social.ReportProgress("CgkI1-mG67sBEAIQBQ", 100.0, (bool success) => {});
-		}							
-	}*/
+		}					
+	}
 
 	void IncrementarPuntos(Notification notificacion){
 		int puntosAIncrementar = (int)notificacion.data;
