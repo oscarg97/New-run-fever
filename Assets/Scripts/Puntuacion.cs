@@ -39,7 +39,6 @@ public class Puntuacion : MonoBehaviour {
 
 	void ActualizarMarcador(){
 		marcador.text = puntuacion.ToString();
-		//Debug.Log ("marcador actualizado con algo de puntos");
 	}
 	
 	// Update is called once per frame
