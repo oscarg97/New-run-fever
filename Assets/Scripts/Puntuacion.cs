@@ -22,12 +22,15 @@ public class Puntuacion : MonoBehaviour {
 		ActualizarMarcador();
 	}
 	
-	//Es la puntuacion a la base de datos pero pues no se como unir a otra bd que no sea google play
+	//Es la puntuacion a la base de datos
 	 void PersonajeHaMuerto(Notification notificacion){
 		if(puntuacion > EstadoJuego.estadoJuego.puntuacionMaxima){
+			Debug.Log("Superado. Maxima: "+EstadoJuego.estadoJuego.puntuacionMaxima+" Actual: "+puntuacion);
 			EstadoJuego.estadoJuego.puntuacionMaxima = puntuacion;
 			EstadoJuego.estadoJuego.Guardar(true);
-		}					
+		}else{
+			Debug.Log("No superado. Maxima: "+EstadoJuego.estadoJuego.puntuacionMaxima+" Actual: "+puntuacion);
+		}
 	}
 
 	void IncrementarPuntos(Notification notificacion){

@@ -5,7 +5,7 @@ using System.Collections;
 public class Bloque : MonoBehaviour {
 
 	private bool haColisionadoConElJugador = false; //Controlar la colision del personaje y plataforma
-	public int puntosGanados = 1;
+	public int puntosGanados = 0;
 
 	// Use this for initialization
 	void Start () {

@@ -14,7 +14,7 @@ public class EstadoJuego : MonoBehaviour {
 	private String rutaArchivo;
 
 	void Awake(){ //Este metodo solo se hace refencia a los componentes
-		rutaArchivo = Application.persistentDataPath + "/puntuacion.dat";
+		//rutaArchivo = Application.persistentDataPath + "/puntuacion.dat";
 		if(estadoJuego==null){
 			estadoJuego = this;
 			DontDestroyOnLoad(gameObject);
@@ -69,7 +69,7 @@ public class EstadoJuego : MonoBehaviour {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(rutaArchivo, FileMode.Open);
 			
-			DatosAGuardar datos = (DatosAGuardar) bf.Deserialize(file);
+			DatosAGuardar datos = new DatosAGuardar(); bf.Deserialize(file);
 			
 			puntuacionMaxima = datos.puntuacionMaxima;
 			
