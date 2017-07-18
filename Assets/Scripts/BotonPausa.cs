@@ -20,7 +20,7 @@ public class BotonPausa : MonoBehaviour {
 			PauseCamera.SetActive(true);
 			pause = true;
 			if (pause == true){
-				Time.timeScale = 0;
+				NotificationCenter.DefaultCenter().PostNotification(this, "Pausa");
 			}
 		}else if(gameObject.name == "Help"){
 			PauseCamera.SetActive(false);

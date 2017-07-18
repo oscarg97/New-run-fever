@@ -4,9 +4,9 @@ using System.Collections;
 public class Agregar_Puntos : MonoBehaviour {
 	
 	public GameObject Server;
-	public static Agregar_Puntos agregarPuntos;
-	string nomUsr = "";
-	public int score = 0;
+	
+	string names = "";
+	string score = "";
 	
 	void Start(){
 		if(gameObject.GetComponent<Conexion>()){
@@ -14,18 +14,16 @@ public class Agregar_Puntos : MonoBehaviour {
 		}	
 	}
 	
- 	void OnGUI (){
-				GUILayout.BeginArea (new Rect (Screen.width / 4, Screen.height / 8, Screen.width / 2, Screen.height / 2));
-				GUILayout.BeginHorizontal ();
-				GUILayout.Label ("NOMBRE : ");
-				nomUsr = GUILayout.TextArea (nomUsr);
-
-				GUILayout.EndHorizontal ();
-				if (GUILayout.Button ("Enviar")) {
-						StartCoroutine (Server.GetComponent<Conexion> ().Agregar_Puntos (nomUsr, score));
-						nomUsr = "";
-						score = 10;
-				}
-				GUILayout.EndArea ();
+ 	void OnGUI (){	
+		GUILayout.BeginArea(new Rect(Screen.width/4,Screen.height/8,Screen.width/2,Screen.height/2));
+		GUILayout.BeginHorizontal();
+		GUILayout.Label("NOMBRE : ");	names = GUILayout.TextArea(names);
+		GUILayout.Label ("SCORE : "); score = GUILayout.TextArea (score);
+		GUILayout.EndHorizontal();
+		if(GUILayout.Button("Enviar")){
+			StartCoroutine(Server.GetComponent<Conexion>().Agregar_Puntos(names,score));
+			names = ""; score = "";
 		}
+		GUILayout.EndArea();
+	}
 }
