@@ -4,7 +4,6 @@ using System.Collections;
 public class ActivarPausa : MonoBehaviour {
 
 	public GameObject camaraPausa;
-	//public AudioClip gameOverClip;
 
 	// Use this for initialization
 	void Start () {

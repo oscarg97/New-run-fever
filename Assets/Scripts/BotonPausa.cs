@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BotonPausa : MonoBehaviour {
 
+	public GameObject PauseCamera;
+	bool pause = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,7 +16,21 @@ public class BotonPausa : MonoBehaviour {
 	}
 
 	void OnMouseDown(){ //Este metodo es para acivar la pausa
-		Debug.Log ("Pausa");
+		if (gameObject.name == "Pause") {
+			PauseCamera.SetActive(true);
+			pause = true;
+			if (pause == true){
+				Time.timeScale = 0;
+			}
+		}else if(gameObject.name == "Help"){
+			PauseCamera.SetActive(false);
+			pause = false;
+			if (pause == false){
+				Time.timeScale = 1;
+			}
+		}
+		//NotificationCenter.DefaultCenter ().PostNotification (this, "Pausa");
+		//Debug.Log ("Pausa");
 		//Application.LoadLevel ("PausaScene");
 	}
 }
