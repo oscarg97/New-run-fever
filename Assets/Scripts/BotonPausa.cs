@@ -22,12 +22,13 @@ public class BotonPausa : MonoBehaviour {
 			if (pause == true){
 				NotificationCenter.DefaultCenter().PostNotification(this, "Pausa");
 			}
-		}else if(gameObject.name == "Help"){
+		}else if(gameObject.name == "Ex"){
 			PauseCamera.SetActive(false);
 			pause = false;
 			if (pause == false){
 				Time.timeScale = 1;
 			}
+			audio.Play ();
 		}
 		//NotificationCenter.DefaultCenter ().PostNotification (this, "Pausa");
 		//Debug.Log ("Pausa");

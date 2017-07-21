@@ -5,8 +5,8 @@ using System.Collections;
 public class Item : MonoBehaviour {
 
 	public int puntosGanados = 10;
-	//public AudioClip itemSoundClip;
-	public float itemSoundVolume = 1f;
+	public AudioClip itemSoundClip;
+	public float itemSoundVolume = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class Item : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider){
 		if(collider.tag == "Player"){
 			NotificationCenter.DefaultCenter().PostNotification(this, "IncrementarPuntos", puntosGanados);
-			//AudioSource.PlayClipAtPoint(itemSoundClip, Camera.main.transform.position, itemSoundVolume);
+			AudioSource.PlayClipAtPoint(itemSoundClip, Camera.main.transform.position, itemSoundVolume);
 		}
 		Destroy(gameObject);
 	}

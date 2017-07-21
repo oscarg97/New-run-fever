@@ -52,6 +52,8 @@
      <Compile Include="Assets\Scripts\AspectUtility.cs" />
      <Compile Include="Assets\Scripts\Bloque.cs" />
      <Compile Include="Assets\Scripts\Boton.cs" />
+     <Compile Include="Assets\Scripts\Boton2.cs" />
+     <Compile Include="Assets\Scripts\BotonIS.cs" />
      <Compile Include="Assets\Scripts\BotonPausa.cs" />
      <Compile Include="Assets\Scripts\ControladorPerzonaje.cs" />
      <Compile Include="Assets\Scripts\Destructor.cs" />
@@ -63,6 +65,7 @@
      <Compile Include="Assets\Scripts\Script\Agregar_Puntos.cs" />
      <Compile Include="Assets\Scripts\Script\Conexion.cs" />
      <Compile Include="Assets\Scripts\Script\Log_In.cs" />
+     <Compile Include="Assets\Scripts\Script\Registrarse.cs" />
      <Compile Include="Assets\Scripts\Script\Ver_puntos.cs" />
      <Compile Include="Assets\Scripts\Script\visualizar.cs" />
      <Compile Include="Assets\Scripts\Scroll.cs" />

@@ -6,27 +6,24 @@ using System.IO;
 using UnityEngine.SocialPlatforms;
 
 public class EstadoJuego : MonoBehaviour {
+	
+	public int puntuacionMaxima;
+	public string jugador = "";
 
-	public int puntuacionMaxima = 0;
-	public string puntuacion = "'.$row['puntuacion'].'";
-	public string usuario = "'.$row['jugador'].'";
-	public string nickname = "YOMEROMERO";
-	string key = "ff4ff8ff99s5s1af5as99vc8d1ny8";
-
-	public static EstadoJuego estadoJuego; //Es una variable para saber a que escena del juego se va
+	public static EstadoJuego estadoJuego;
 	
 	private String rutaArchivo;
 
-	void Awake(){ //Este metodo solo se hace refencia a los componentes
-		rutaArchivo = Application.persistentDataPath + "/puntuacion.php";
+	void Awake(){
+		rutaArchivo = Application.persistentDataPath + "/datos"+jugador+".dat";
 		if(estadoJuego==null){
 			estadoJuego = this;
 			DontDestroyOnLoad(gameObject);
-			/*
-			cloud = new GooglePlayCloud();
 			
-			PlayGamesPlatform.DebugLogEnabled = false;
-			PlayGamesPlatform.Activate();*/
+			//cloud = new GooglePlayCloud();
+			
+			//PlayGamesPlatform.DebugLogEnabled = false;
+			//PlayGamesPlatform.Activate();
 		}else if(estadoJuego!=this){
 			Destroy(gameObject);
 		}
@@ -35,6 +32,9 @@ public class EstadoJuego : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Cargar();
+		NotificationCenter.DefaultCenter ().AddObserver (this, "Sesion");
+		//NotificationCenter.DefaultCenter().PostNotification (this, "SesionScore", jugador);
+		//Debug.Log(puntuacionMaxima.ToString());
 		//InicioSesionGooglePlay(true);
 	}
 	
@@ -48,62 +48,61 @@ public class EstadoJuego : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (jugador != "") {
+			//NotificationCenter.DefaultCenter().AddObserver (this, "Sesion");
+			NotificationCenter.DefaultCenter ().PostNotification (this, "SesionScore", jugador);
+		}
 	}
 	
-	//
 	public void Guardar(bool guardarEnLaNube){
-		//BinaryFormatter bf = new BinaryFormatter();
+		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create(rutaArchivo);
 		
 		DatosAGuardar datos = new DatosAGuardar();
-		datos.puntuacionMaxima = puntuacionMaxima;
-		datos.nickname = nickname;
-		StreamWriter sw = new StreamWriter(file);
-		sw.WriteLine("<?php" +
-			"include ('conexion.php');" +
-			"$name = $_GET["+nickname+"];" +
-			"$score = $_GET["+puntuacion+"];" +
-			"$hash = $_GET["+key+"];" +
-			"if($hash == "+key+"){" +
-			"$query = 'INSERT INTO juego VALUES (NULL, '$name', '$score');';" +
-			"$result = mysql_query($query) or die('Query failed: ' . mysql_error());" +
-			"}" +
-			"?>");
-		sw.Close();
-		//bf.Serialize(file, datos);
+		datos.jugador = jugador;
+		if(puntuacionMaxima < datos.puntuacionMaxima){
+			puntuacionMaxima = datos.puntuacionMaxima;
+		}
+		//NotificationCenter.DefaultCenter().AddObserver (this, "GuardarScore", puntuacionMaxima);
+		//NotificationCenter.DefaultCenter().AddObserver (this, "ObtenerJugador", jugador);
+
+		bf.Serialize(file, datos);
 		
-		//file.Close();
+		file.Close();
 		
-		//if(guardarEnLaNube){
-			//cloud.CloudSave(datos);
-		//}
+		/*if(guardarEnLaNube){
+			cloud.CloudSave(datos);
+		}*/
 	}
 	
 	void Cargar(){
 		if(File.Exists(rutaArchivo)){
-			//BinaryFormatter bf = new BinaryFormatter();
+			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(rutaArchivo, FileMode.Open);
 			
-			DatosAGuardar datos = new DatosAGuardar(); 
-			//bf.Deserialize(file);
-			
+			DatosAGuardar datos = (DatosAGuardar) bf.Deserialize(file);
+
+			jugador = datos.jugador;
+
 			puntuacionMaxima = datos.puntuacionMaxima;
-			nickname = datos.nickname;
-			StreamReader sr = new StreamReader(file);
-			sr.ReadToEnd();
-			sr.Close();
-			//file.Close();
+			
+			file.Close();
 		}else{
-			puntuacionMaxima = 0;
 		}
+	}
+	void Sesion(Notification resultado){
+		string player = (string)resultado.data;
+		jugador = player;
+	}
+	void SesionScore(int score){
+		puntuacionMaxima = score;
 	}
 }
 
 [Serializable]
 class DatosAGuardar{
 	public int puntuacionMaxima;
-	public string nickname;
+	public string jugador;
 }
 
 /*class GooglePlayCloud : GooglePlayGamesCloudHelper<DatosAGuardar>{

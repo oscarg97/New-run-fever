@@ -25,5 +25,7 @@ public class Boton : MonoBehaviour {
 		}if (Application.loadedLevelName == "GameScene") {
 			Application.LoadLevel("GameScene");
 		}
+		audio.Play ();
+		//Invoke ("Detener", 4 * audio.clip.length);
 	}
 }

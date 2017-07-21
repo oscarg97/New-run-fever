@@ -6,7 +6,7 @@ public class Puntuacion : MonoBehaviour {
 
 	private int key = 0;
 	private int _puntuacion = 0;
-	private string nickname;
+	private string jugador;
 	public int puntuacion{
 		get { return _puntuacion ^ key; }
 		set {
@@ -26,11 +26,11 @@ public class Puntuacion : MonoBehaviour {
 	//Es la puntuacion a la base de datos
 	 void PersonajeHaMuerto(Notification notificacion){
 		if(puntuacion > EstadoJuego.estadoJuego.puntuacionMaxima){
-			Debug.Log("Superado por "+EstadoJuego.estadoJuego.nickname+". Maxima: "+EstadoJuego.estadoJuego.puntuacionMaxima+" Actual: "+puntuacion);
+			Debug.Log("Superado por "+EstadoJuego.estadoJuego.jugador+". Maxima: "+EstadoJuego.estadoJuego.puntuacionMaxima+" Actual: "+puntuacion);
 			EstadoJuego.estadoJuego.puntuacionMaxima = puntuacion;
 			EstadoJuego.estadoJuego.Guardar(true);
-		}else{
-			Debug.Log("No superado por "+EstadoJuego.estadoJuego.nickname+". Maxima: "+EstadoJuego.estadoJuego.puntuacionMaxima+" Actual: "+puntuacion);
+		}else if (puntuacion <= EstadoJuego.estadoJuego.puntuacionMaxima){
+			Debug.Log("No superado por "+EstadoJuego.estadoJuego.jugador+". Maxima: "+EstadoJuego.estadoJuego.puntuacionMaxima+" Actual: "+puntuacion);
 		}
 	}
 
