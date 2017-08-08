@@ -18,10 +18,12 @@ public class Registrarse : MonoBehaviour {
 	}
 	void OnGUI (){
 		GUILayout.BeginArea(new Rect(Screen.width/4,Screen.height/5,Screen.width/2,Screen.height/1));
-		GUILayout.Space(50);
-		GUILayout.Label("Jugador: "); jugador = GUILayout.TextArea(jugador);
-		GUILayout.Label ("Contrasenia: "); password = GUILayout.TextArea (password);
-		GUILayout.Label("Correo electronico: "); email = GUILayout.TextArea(email);
+		GUILayout.Space(45);
+		jugador = GUILayout.TextArea(jugador);
+		GUILayout.Space(35);
+		password = GUILayout.TextArea (password);
+		GUILayout.Space(35);
+		email = GUILayout.TextArea(email);
 		if(GUILayout.Button("Registrarse")){
 			StartCoroutine(Server.GetComponent<Conexion>().Registrarse(jugador,password,email));
 			jugador = ""; password = ""; email="";

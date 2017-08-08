@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
  
 public class Conexion : MonoBehaviour{
-    string Agregar_Puntos_PHP = "http://192.168.1.70:8080/run-fever/agregarpuntos.php";
-    string Ver_Puntos_PHP = "http://192.168.1.70:8080/run-fever/verpuntos.php";
-	string Log_In_PHP = "http://192.168.1.70:8080/run-fever/login.php";
-	string Log_In2_PHP = "http://192.168.1.70:8080/run-fever/login2.php";
-	string Registrarse_PHP = "http://192.168.1.70:8080/run-fever/registrarse.php";
+    string Agregar_Puntos_PHP = "http://192.168.1.174:8080/run-fever/agregarpuntos.php";
+    string Ver_Puntos_PHP = "http://192.168.1.174:8080/run-fever/verpuntos.php";
+	string Log_In_PHP = "http://192.168.1.174:8080/run-fever/login.php";
+	string Log_In2_PHP = "http://192.168.1.174:8080/run-fever/login2.php";
+	string Registrarse_PHP = "http://192.168.1.174:8080/run-fever/registrarse.php";
 	
     public IEnumerator Agregar_Puntos(string nombre,int puntos){	
         if(nombre != ""){
