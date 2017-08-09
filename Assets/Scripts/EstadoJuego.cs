@@ -15,7 +15,7 @@ public class EstadoJuego : MonoBehaviour {
 	private String rutaArchivo;
 
 	void Awake(){
-		rutaArchivo = Application.persistentDataPath + "/datos"+jugador+".dat";
+		rutaArchivo = Application.persistentDataPath + "/datos.dat";
 		if(estadoJuego==null){
 			estadoJuego = this;
 			DontDestroyOnLoad(gameObject);

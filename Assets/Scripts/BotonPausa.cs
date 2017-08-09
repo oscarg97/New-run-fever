@@ -28,7 +28,6 @@ public class BotonPausa : MonoBehaviour {
 			if (pause == false){
 				Time.timeScale = 1;
 			}
-			audio.Play ();
 		}
 		//NotificationCenter.DefaultCenter ().PostNotification (this, "Pausa");
 		//Debug.Log ("Pausa");
